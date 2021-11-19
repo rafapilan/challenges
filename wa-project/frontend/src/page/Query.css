@@ -1,0 +1,48 @@
+div.content {
+    grid-area: content;
+    background-color: #f8fafb;
+}
+div.query {
+    border: solid 1px skyblue;
+    margin: 0px 10vh;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    min-height: 90%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+div.question {
+    margin: 5vh;
+}
+
+div.question h3 {
+    color: darkblue;
+    font-weight: 400;
+}
+
+div.label {
+    position: absolute;
+    margin-left: 12vh;
+    margin-top: -2.5vh;
+    border: solid 1px skyblue;
+    border-radius: 10px;
+    background-color: #fff;
+}
+
+div.label h5 {
+    color: dodgerblue;
+    font-weight: 400;
+    margin: 0px;
+    padding: 5px 10px;
+}
+
+div.buttons-query {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5vh;
+}

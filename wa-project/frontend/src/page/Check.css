@@ -1,0 +1,21 @@
+div.check {
+    grid-area: content;
+    background-color: #f8fafb;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+div.check h1 {
+    color:#dc004e;
+    font-weight: 400;
+}
+
+div.buttons-check {
+    margin: 10vh;
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}

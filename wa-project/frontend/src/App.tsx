@@ -1,14 +1,13 @@
-import React from 'react';
 import './App.css';
-import Content from './component/Content';
 import Footer from './component/Footer';
 import Header from './component/Header';
+import Routes from './Routes';
 
 function App() {
     return (
         <div className="App">
             <Header />
-            <Content />
+            <Routes />
             <Footer />
         </div>
     );
