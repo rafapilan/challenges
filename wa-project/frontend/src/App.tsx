@@ -1,14 +1,17 @@
 import './App.css';
-import Footer from './component/Footer';
-import Header from './component/Header';
+import Footer from './components/Footer';
+import Header from './components/Header';
+import QuestionsProvider from './context/Questions';
 import Routes from './Routes';
 
 function App() {
     return (
         <div className="App">
-            <Header />
-            <Routes />
-            <Footer />
+            <QuestionsProvider>
+                <Header />
+                <Routes />
+                <Footer />
+            </QuestionsProvider>
         </div>
     );
 }

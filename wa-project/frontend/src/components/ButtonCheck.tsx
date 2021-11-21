@@ -1,19 +1,19 @@
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
 import './Button.css'
 
 interface ButtonProps {
     label: string
     color: "primary" | "default"
-    path: string
+    onClick?: () => void
+
 }
 
 function ButtonCheck(props: ButtonProps) {
     return (
-        <Link to={props.path}>
-            <Button className="button" variant="contained" color={props.color}>{props.label}</Button>
-        </Link>
-    );
+        <Button className="button" variant="contained" color={props.color} onClick={props.onClick}>
+            {props.label}
+        </Button>
+    )
 }
 
 export default ButtonCheck

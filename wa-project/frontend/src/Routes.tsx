@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom'
-import Check from './page/Check';
-import Home from './page/Home';
-import Query from './page/Query';
+import Check from './pages/Check';
+import Home from './pages/Home';
+import Query from './pages/Query';
 
 function Routes() {
     return (
@@ -9,7 +9,7 @@ function Routes() {
                 <Switch>
                     <Route path="/" element={<Home />} />
                     <Route path="/check/:amount" element={<Check />} />
-                    <Route path="/query/:amount" element={<Query />} />
+                    <Route path="/query" element={<Query />} />
                 </Switch>
         </BrowserRouter>
     );
