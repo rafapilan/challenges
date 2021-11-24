@@ -1,11 +1,5 @@
+import PropsPlacar from '../interfaces/PropsPlacar'
 import './Placar.css'
-
-interface PropsPlacar {
-    label: string
-    value: number
-    complement?: string
-    color: string
-}
 
 function Placar (props: PropsPlacar) {
     return (

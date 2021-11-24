@@ -2,7 +2,7 @@ import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import axios from "axios"
 import { useNavigate } from "react-router"
 import { Link } from "react-router-dom"
-import ButtonAmount from "../components/ButtonAmount"
+import Buttons from "../components/Buttons"
 import { useQuestions } from "../context/Questions"
 import "./Home.css"
 
@@ -27,13 +27,13 @@ function Home() {
         <div className="home">
             <h1>How many questions do you want to answer?</h1>
             <div className="buttonsHome">
-                <ButtonAmount label={1} click={start} />
-                <ButtonAmount label={3} click={start} />
-                <ButtonAmount label={5} click={start} />
-                <ButtonAmount label={10} click={start} />
-                <ButtonAmount label={15} click={start} />
-                <ButtonAmount label={20} click={start} />
-                <ButtonAmount label={30} click={start} />
+                <Buttons variant="outlined" color="primary" label={'1'} click={start} />
+                <Buttons variant="outlined" color="primary" label={'3'} click={start} />
+                <Buttons variant="outlined" color="primary" label={'5'} click={start} />
+                <Buttons variant="outlined" color="primary" label={'10'} click={start} />
+                <Buttons variant="outlined" color="primary" label={'15'} click={start} />
+                <Buttons variant="outlined" color="primary" label={'20'} click={start} />
+                <Buttons variant="outlined" color="primary" label={'30'} click={start} />
             </div>
             {localStorage.getItem('lastQuiz') ? (
                 <Link to="/result">

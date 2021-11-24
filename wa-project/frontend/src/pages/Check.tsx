@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router"
-import ButtonCheck from "../components/ButtonCheck"
+import Buttons from "../components/Buttons"
 import { useQuestions } from "../context/Questions"
 import "./Check.css"
 
@@ -12,7 +12,7 @@ function Check() {
 
     const start = () => {
         if (questions !== [])
-            navigate('/query')
+            navigate(`/quiz/${amount}`)
     }
 
     const cancel = () => {
@@ -23,8 +23,8 @@ function Check() {
         <div className="check">
             <h1>Do you want to start the quiz with {amount} questions?</h1>
             <div className="buttonsCheck">
-                <ButtonCheck color={"primary"} label={"Start"} onClick={start} />
-                <ButtonCheck color={"default"} label={"Cancel"} onClick={cancel} />
+                <Buttons variant="contained" color={"primary"} label={"Start"} click={start} />
+                <Buttons variant="contained" color={"default"} label={"Cancel"} click={cancel} />
             </div>
         </div>
     )

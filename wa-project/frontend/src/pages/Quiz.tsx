@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router'
-import ButtonAnswer from '../components/ButtonAnswer'
+import { useNavigate, useParams } from 'react-router'
+import Buttons from '../components/Buttons'
 import { useQuestions } from '../context/Questions'
-import './Query.css'
+import './Quiz.css'
 
-function Query() {
+function Quiz() {
     let navigate = useNavigate()
 
-    const [amount, setAmount] = useState(0)
+    const { amount } = useParams()
 
     const [resultQuestions, setResultQuestions] = useState<Object[]>([])
 
@@ -15,7 +15,7 @@ function Query() {
 
     const { questions } = useQuestions()
 
-    const [query, setQuery] = useState({
+    const [quiz, setQuiz] = useState({
         category: 'Category',
         difficulty: 'Difficulty',
         question: 'How about a question?',
@@ -26,7 +26,7 @@ function Query() {
     const [answers, setAnswers] = useState(['Incorrect answer 1.', 'Incorrect answer 2.', 'Correct Answer'])
 
     useEffect(() => {
-        setQuery(questions[activeQuestion])
+        setQuiz(questions[activeQuestion])
     }, [activeQuestion])
 
     useEffect(() => {
@@ -35,49 +35,46 @@ function Query() {
         setAnswers(array)
     }, [activeQuestion])
 
-    useEffect(() => {
-        setAmount(questions.length)
-    }, [])
-
     const addResult = (resp: string) => {
         let result = resultQuestions
         const resultAtual = {
-            question: query.question, 
-            correct_answer: query.correct_answer,
+            question: quiz.question,
+            correct_answer: quiz.correct_answer,
             answer: resp,
-            success: query.correct_answer === resp ? 1 : 0
+            success: quiz.correct_answer === resp ? 1 : 0
         }
         result.push(resultAtual)
         setResultQuestions(result)
-        console.log(resultQuestions)
     }
-    
+
     const response = (resp: string) => {
-        if (activeQuestion < (amount - 1)){
-            addResult(resp)
-            setActiveQuestion(activeQuestion + 1)
-        }
-        else {
-            addResult(resp)
-            const lastQuiz = {
-                amount: amount,
-                result: resultQuestions
+        if (amount) {
+            if (activeQuestion < (+amount - 1)) {
+                addResult(resp)
+                setActiveQuestion(activeQuestion + 1)
             }
-            localStorage.setItem('lastQuiz', JSON.stringify(lastQuiz))
-            navigate('/result')
+            else {
+                addResult(resp)
+                const lastQuiz = {
+                    amount: amount,
+                    result: resultQuestions
+                }
+                localStorage.setItem('lastQuiz', JSON.stringify(lastQuiz))
+                navigate('/result')
+            }
         }
     }
 
     return (
         <div className="content">
-            <div className="label"><h5>{query.category + 1} ({query.difficulty})</h5></div>
-            <div className="query">
+            <div className="label"><h5>{quiz.category + 1} ({quiz.difficulty})</h5></div>
+            <div className="quiz">
                 <div className="question">
-                    <h3><strong>{activeQuestion + 1}.{amount} -</strong> {query.question}</h3>
+                    <h3><strong>{activeQuestion + 1}.{amount} -</strong> {quiz.question}</h3>
                 </div>
-                <div className="buttonsQuery">
+                <div className="buttonsQuiz">
                     {answers.sort().map(answer => (
-                        <ButtonAnswer key={answer} label={answer} click={response} />
+                        <Buttons key={answer} variant="outlined" color="primary" label={answer} click={response} />
                     ))}
                 </div>
             </div>
@@ -85,4 +82,4 @@ function Query() {
     )
 }
 
-export default Query
+export default Quiz

@@ -2,7 +2,7 @@ div.content {
     grid-area: content;
     background-color: #f8fafb;
 }
-div.query {
+div.quiz {
     border: solid 1px skyblue;
     margin: 0px 10vh;
     margin-bottom: 10px;
@@ -41,7 +41,7 @@ div.label h5 {
     padding: 5px 10px;
 }
 
-div.buttonsQuery {
+div.buttonsQuiz {
     display: flex;
     flex-direction: column;
     margin-left: 5vh;

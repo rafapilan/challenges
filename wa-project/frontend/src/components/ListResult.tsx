@@ -11,13 +11,7 @@ import Check from '@material-ui/icons/Check'
 import CheckCircle from '@material-ui/icons/CheckCircle'
 import Close from '@material-ui/icons/Close'
 import { useState } from 'react'
-
-interface QuestionsLS {
-    question: string
-    correct_answer: string
-    answer: string
-    success: number
-}
+import QuestionsLS from '../interfaces/QuestionsLS'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +31,7 @@ function ListResult(params: QuestionsLS) {
 
     return (
         <>
-            <ListItem button onClick={handleClick}>
+            <ListItem key={params.question} button onClick={handleClick}>
                 <ListItemIcon>
                     {params.success === 1 ? 
                         <CheckCircle style={{color:'#388e3c'}} color="inherit" /> : 
@@ -47,7 +41,7 @@ function ListResult(params: QuestionsLS) {
                 <ListItemText primary={params.question} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse key={params.question + params.correct_answer} in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                     <ListItem button className={classes.nested}>
                         <ListItemIcon>
@@ -58,7 +52,7 @@ function ListResult(params: QuestionsLS) {
                 </List>
             </Collapse>
             {params.success === 1 ? '' : (
-                <Collapse in={open} timeout="auto" unmountOnExit>
+                <Collapse key={params.question + params.answer} in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding>
                         <ListItem button className={classes.nested}>
                             <ListItemIcon>

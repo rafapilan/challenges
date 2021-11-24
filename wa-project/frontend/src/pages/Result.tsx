@@ -1,22 +1,11 @@
-import PlayArrow from '@material-ui/icons/PlayArrow';
-import List from '@material-ui/core/List';
+import PlayArrow from '@material-ui/icons/PlayArrow'
+import List from '@material-ui/core/List'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Placar from '../components/Placar'
 import './Result.css'
 import ListResult from '../components/ListResult'
-
-interface QuestionsLS {
-    question: string
-    correct_answer: string
-    answer: string
-    success: number
-}
-
-interface ResultLS {
-    amount: number,
-    result: QuestionsLS[]
-}
+import ResultLS from '../interfaces/ResultLS'
 
 function Result() {
     const [lastResult, setLastResult] = useState<ResultLS>({
