@@ -7,7 +7,7 @@ div.query {
     margin: 0px 10vh;
     margin-bottom: 10px;
     border-radius: 10px;
-    min-height: 90%;
+    min-height: 95%;
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -41,7 +41,7 @@ div.label h5 {
     padding: 5px 10px;
 }
 
-div.buttons-query {
+div.buttonsQuery {
     display: flex;
     flex-direction: column;
     margin-left: 5vh;

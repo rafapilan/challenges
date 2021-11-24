@@ -22,7 +22,7 @@ function Check() {
     return (
         <div className="check">
             <h1>Do you want to start the quiz with {amount} questions?</h1>
-            <div className="buttons-check">
+            <div className="buttonsCheck">
                 <ButtonCheck color={"primary"} label={"Start"} onClick={start} />
                 <ButtonCheck color={"default"} label={"Cancel"} onClick={cancel} />
             </div>

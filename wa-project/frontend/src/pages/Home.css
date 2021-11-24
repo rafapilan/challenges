@@ -13,7 +13,7 @@ div.home h1 {
     font-weight: 400;
 }
 
-div.buttons-home {
+div.buttonsHome {
     margin: 10vh;
     width: 80%;
     display: flex;
@@ -21,3 +21,30 @@ div.buttons-home {
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+div.lastResult {
+    display: flex;
+    align-items: center;
+    border: solid 2px #1976d2;
+    border-radius: 5px;
+    background-color: rgb(17, 82, 147);
+    margin: 10px;
+}
+
+div.lastResult:hover {
+    background-color: rgb(17, 82, 147, 0.8);
+}
+
+.iconResult {
+    margin-left: 10px;
+    font-weight: 400;
+    color: #fff;
+}
+
+div.lastResult h3 {
+    display: inline;
+    margin: 10px;
+    font-weight: 400;
+    color: #fff;
+}
+
