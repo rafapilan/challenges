@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes as Switch } from 'react-router-dom'
+import { BrowserRouter, Navigate, Route, Routes as Switch } from 'react-router-dom'
 import Check from './pages/Check';
 import Home from './pages/Home';
 import Quiz from './pages/Quiz';
@@ -12,6 +12,7 @@ function Routes() {
                     <Route path="/check/:amount" element={<Check />} />
                     <Route path="/quiz/:amount" element={<Quiz />} />
                     <Route path="/result" element={<Result />} />
+                    <Route path="*" element={<Navigate replace to="/" />} />
                 </Switch>
         </BrowserRouter>
     );

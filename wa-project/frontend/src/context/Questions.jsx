@@ -3,16 +3,12 @@ import { createContext, useContext, useState } from "react";
 export const QuestionsContext = createContext()
 
 export default function QuestionsProvider({ children }) {
-    const [questions, setQuestions] = useState([{
-        category: 'Category',
-        difficulty: 'Difficulty',
-        question: 'How about a question?',
-        correct_answer: 'Correct answer.',
-        incorrect_answers: ['Incorrect answer 1.', 'Incorrect answer 2.']
-    }])
+    const [questions, setQuestions] = useState()
+
+    const [on, setOn] = useState(false)
 
     return (
-        <QuestionsContext.Provider value={{ questions, setQuestions }}>
+        <QuestionsContext.Provider value={{ questions, setQuestions, on, setOn }}>
             {children}
         </QuestionsContext.Provider>
     )
@@ -21,6 +17,6 @@ export default function QuestionsProvider({ children }) {
 export function useQuestions() {
     const context = useContext(QuestionsContext)
     if (!context) throw new Error("useQuestions must be used within a QuestionsProvider")
-    const { questions, setQuestions } = context
-    return { questions, setQuestions }
+    const { questions, setQuestions, on, setOn } = context
+    return { questions, setQuestions, on, setOn }
 }

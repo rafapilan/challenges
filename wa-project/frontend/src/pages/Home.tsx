@@ -9,12 +9,21 @@ import "./Home.css"
 function Home() {
     let navigate = useNavigate()
 
-    const { setQuestions } = useQuestions()
+    const { setQuestions, setOn } = useQuestions()
+
+    /* , {
+            headers: {
+                'responseEncoding': 'utf8',
+                'Content-type': 'charset=utf-8',
+                'Accept': 'charset=utf-8'
+            }
+    } */
 
     const start = (n: number) => {
         axios.get(`https://opentdb.com/api.php?amount=${n}`)
             .then(response => {
                 setQuestions(response.data.results)
+                setOn(true)
                 navigate(`/check/${n}`)
             })
             .catch(() => {

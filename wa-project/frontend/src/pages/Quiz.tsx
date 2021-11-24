@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router'
 import Buttons from '../components/Buttons'
 import { useQuestions } from '../context/Questions'
+import QuestionsLS from '../interfaces/QuestionsLS'
 import './Quiz.css'
 
 function Quiz() {
@@ -9,11 +10,17 @@ function Quiz() {
 
     const { amount } = useParams()
 
-    const [resultQuestions, setResultQuestions] = useState<Object[]>([])
+    const { questions, on, setOn } = useQuestions()
+
+    useEffect(() => {
+        let num = amount ? amount : 0
+        if (on === false || +num !== questions.length)
+            navigate('/')
+    })
+
+    const [resultQuestions, setResultQuestions] = useState<QuestionsLS[]>([])
 
     const [activeQuestion, setActiveQuestion] = useState(0)
-
-    const { questions } = useQuestions()
 
     const [quiz, setQuiz] = useState({
         category: 'Category',
@@ -26,14 +33,20 @@ function Quiz() {
     const [answers, setAnswers] = useState(['Incorrect answer 1.', 'Incorrect answer 2.', 'Correct Answer'])
 
     useEffect(() => {
-        setQuiz(questions[activeQuestion])
-    }, [activeQuestion, questions])
+        let num = amount ? amount : 0
+        if (on === true && +num === questions.length) {
+            setQuiz(questions[activeQuestion])
+        }
+    }, [activeQuestion, amount, on, questions])
 
     useEffect(() => {
-        let array = questions[activeQuestion].incorrect_answers
-        array.push(questions[activeQuestion].correct_answer)
-        setAnswers(array)
-    }, [activeQuestion, questions])
+        let num = amount ? amount : 0
+        if (on === true && +num === questions.length) {
+            let array = questions[activeQuestion].incorrect_answers
+            array.push(questions[activeQuestion].correct_answer)
+            setAnswers(array)
+        }
+    }, [activeQuestion, amount, on, questions])
 
     const addResult = (resp: string) => {
         let result = resultQuestions
@@ -60,6 +73,7 @@ function Quiz() {
                     result: resultQuestions
                 }
                 localStorage.setItem('lastQuiz', JSON.stringify(lastQuiz))
+                setOn(false)
                 navigate('/result')
             }
         }

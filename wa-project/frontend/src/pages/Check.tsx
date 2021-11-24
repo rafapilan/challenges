@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router"
 import Buttons from "../components/Buttons"
 import { useQuestions } from "../context/Questions"
@@ -5,14 +6,18 @@ import "./Check.css"
 
 function Check() {
     let navigate = useNavigate()
+    
+    const { on } = useQuestions()
+
+    useEffect(() => {
+        if (on === false)
+            navigate('/')
+    })
 
     const { amount } = useParams()
 
-    const { questions } = useQuestions()
-
     const start = () => {
-        if (questions !== [])
-            navigate(`/quiz/${amount}`)
+        navigate(`/quiz/${amount}`)
     }
 
     const cancel = () => {
