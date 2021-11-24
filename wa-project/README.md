@@ -1,3 +1,5 @@
+# App publicado: https://rafapilan-quiz.netlify.app/
+
 # Desafio - Front End
 ## Instruções gerais
 Olá!
@@ -20,8 +22,3 @@ Além disso, usar o LocalStorage para armazenar, git para realizar a versão e g
 ## Requisitos não obrigatórios
 
 Você será bem avaliado se usar Context API, Axio, Hooks, Formik, testes de comportamento e se você realizar um deploy em algum link. Além disso, vamos dar uma atenção maior quando demonstrar uma boa apresentação de design e uso de design patterns (como services, repositories, factories, builders e etc)
-
-
-## Sobre o prazo?
-
-Lembrando que prazo dado para nós é prazo cumprido e vamos prezar por aqueles candidatos que entregarem o projeto no prazo que pediu e com a coerência da tarefa (sabemos que vocês trabalham em outros locais e/ou estudam, isso será levado em consideração, não se preocupe).
