@@ -41,8 +41,8 @@ function ListResult(params: QuestionsLS) {
                 <ListItemText primary={params.question} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItem>
-            <Collapse key={params.question + params.correct_answer} in={open} timeout="auto" unmountOnExit>
-                <List component="div" disablePadding>
+            <Collapse in={open} timeout="auto" unmountOnExit>
+                <List key={params.question + params.correct_answer} component="div" disablePadding>
                     <ListItem button className={classes.nested}>
                         <ListItemIcon>
                             <Check style={{color:'#388e3c'}} color="inherit" />
@@ -52,8 +52,8 @@ function ListResult(params: QuestionsLS) {
                 </List>
             </Collapse>
             {params.success === 1 ? '' : (
-                <Collapse key={params.question + params.answer} in={open} timeout="auto" unmountOnExit>
-                    <List component="div" disablePadding>
+                <Collapse in={open} timeout="auto" unmountOnExit>
+                    <List key={params.question + params.answer + params.success} component="div" disablePadding>
                         <ListItem button className={classes.nested}>
                             <ListItemIcon>
                                 <Close style={{color:'#dc004e'}} color="inherit" />
