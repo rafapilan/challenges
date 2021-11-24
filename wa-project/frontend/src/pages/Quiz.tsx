@@ -27,13 +27,13 @@ function Quiz() {
 
     useEffect(() => {
         setQuiz(questions[activeQuestion])
-    }, [activeQuestion])
+    }, [activeQuestion, questions])
 
     useEffect(() => {
         let array = questions[activeQuestion].incorrect_answers
         array.push(questions[activeQuestion].correct_answer)
         setAnswers(array)
-    }, [activeQuestion])
+    }, [activeQuestion, questions])
 
     const addResult = (resp: string) => {
         let result = resultQuestions
