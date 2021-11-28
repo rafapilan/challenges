@@ -1,9 +1,16 @@
-function App() {
-  return (
-    <div>
-      <h1>Hellllllo!!!</h1>
-    </div>
-  );
-};
+import 'App.css'
+import Footer from 'components/template/Footer'
+import Header from 'components/template/Header'
+import Routes from 'Routes'
 
-export default App;
+function App() {
+    return (
+        <div className="app">
+            <Header />
+            <Routes />
+            <Footer />
+        </div>
+    )
+}
+
+export default App

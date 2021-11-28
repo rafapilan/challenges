@@ -1,0 +1,9 @@
+div.logo {
+    height: 100%;
+    padding: 20px 0px;
+}
+
+.logo img {
+    height: 100%;
+    padding: 10px;
+}
