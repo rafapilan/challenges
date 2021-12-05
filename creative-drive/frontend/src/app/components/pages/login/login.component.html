@@ -1,0 +1,22 @@
+<mat-card class="card mat-elevation-z3">
+  <mat-card-title>Login</mat-card-title>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input matInput type="email" placeholder="Email (email@provedor.com)" [(ngModel)]="email" name="email">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="password" placeholder="Senha" [(ngModel)]="password" name="password">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions class="buttons">
+    <button mat-raised-button (click)="login()" color="primary">
+      Entrar
+    </button>
+    <button mat-raised-button (click)="cancel()">
+      Cancelar
+    </button>
+  </mat-card-actions>
+  <mat-card-footer>Cadastre-se</mat-card-footer>
+</mat-card>

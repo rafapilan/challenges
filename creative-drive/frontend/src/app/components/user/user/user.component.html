@@ -1,0 +1,34 @@
+<mat-card class="user">
+  <mat-card-title>Inserir novo usuário:</mat-card-title>
+  <form>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Insira o nome completo."
+        [(ngModel)]="name" name="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" placeholder="CPF (000.000.000-00)"
+        [(ngModel)]="cpf" name="cpf">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="email" placeholder="Email (email@provedor.com)"
+        [(ngModel)]="email" name="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Senha"
+      [(ngModel)]="password" name="password">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="password" placeholder="Confirme a senha"
+      [(ngModel)]="confirmPassword" name="confirmPassword">
+    </mat-form-field>
+    <mat-checkbox [(ngModel)]="admin" name="admin">Administrador.</mat-checkbox>
+  </form>
+  <div class="buttons">
+    <button mat-raised-button (click)="save()" color="primary">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="cancel()">
+      Cancelar
+    </button>
+  </div>
+</mat-card>

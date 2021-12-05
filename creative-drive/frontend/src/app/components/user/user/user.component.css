@@ -1,0 +1,16 @@
+.user {
+    min-width: 80vh;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+div.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px;
+}
