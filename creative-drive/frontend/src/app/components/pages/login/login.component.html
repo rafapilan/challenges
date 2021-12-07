@@ -8,15 +8,20 @@
       <mat-form-field>
         <input matInput type="password" placeholder="Senha" [(ngModel)]="password" name="password">
       </mat-form-field>
+      <mat-checkbox [(ngModel)]="stayConnected" name="stayConnected">Permanecer conectado?</mat-checkbox>
     </form>
   </mat-card-content>
   <mat-card-actions class="buttons">
-    <button mat-raised-button (click)="login()" color="primary">
+    <button mat-raised-button (click)="authenticate()" color="primary">
       Entrar
     </button>
     <button mat-raised-button (click)="cancel()">
       Cancelar
     </button>
   </mat-card-actions>
-  <mat-card-footer>Cadastre-se</mat-card-footer>
+  <mat-card-footer>
+    <a (click)="newUser()">
+      Cadastre-se
+    </a>
+  </mat-card-footer>
 </mat-card>

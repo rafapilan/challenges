@@ -13,6 +13,21 @@
     text-decoration: none;
 }
 
+.logo {
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.logo:hover {
+    background-color: #414345;
+    box-shadow: rgba(250, 250, 250, 0.5) 1.95px 1.95px 2.6px;
+}
+
+.logo:active {
+    background-color: #000;
+    box-shadow: rgba(250, 250, 250, 0.5) 1px 1px 1.5px;
+}
+
 .logoMenu {
     max-height: 40px;
 }
@@ -20,7 +35,7 @@
 .homeIcon {
     font-size: 1.5rem;
     color: #fff;
-    padding: 10px;
+    margin-left: 10px;
     text-decoration: none;
 }
 
@@ -28,7 +43,41 @@
     font-size: 2rem;
 }
 
-.login span {
+.login {
+    display: flex;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: solid 1px #00bcd4;
+    border-radius: 50%;
+    background-color: #2979ff;
+    margin: 5px;
+}
+
+.avatar span {
+    font-size: 1.3rem;
+}
+
+.login a {
     margin: 10px;
     font-size: 1rem;
+}
+
+.invisible {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    font-weight:400;
+    cursor: pointer;
 }

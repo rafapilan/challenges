@@ -1,3 +1,4 @@
+import { AuthenticateService } from './authenticate.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,9 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  email: string = ''
+  password: string = ''
+  stayConnected: boolean = true
+
+  constructor(
+    private router: Router,
+    private authenticateService: AuthenticateService  
+  ) { }
 
   ngOnInit() {
   }
 
+  authenticate(): void {
+    this.authenticateService.login(this.email, this.password, this.stayConnected)
+    this.authenticateService.isAuthenticated ?
+      this.router.navigate(['users']) :
+      this.authenticateService.showMessage('Email ou senha não encontrados!')
+  }
+
+  newUser(): void {
+    this.router.navigate(['user'])
+  }
 }

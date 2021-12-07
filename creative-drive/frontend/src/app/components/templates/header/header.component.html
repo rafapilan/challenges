@@ -1,15 +1,24 @@
 <header class="header">
   <mat-toolbar class="headerBar mat-elevation-z4">
     <span>
-      <a>
+      <a class="logo" (click)="goHome()">
         <img class="logoMenu" src="assets/img/logo.png" alt="logo">
-        <mat-icon class="homeIcon">home</mat-icon>
+        <i class="material-icons homeIcon">home</i>
       </a>
     </span>
-    <span class="title"><mat-icon class="homeIcon">home</mat-icon>Usuários do Sistema</span>
+    <span class="title">Usuários e Login</span>
     <div class="login">
-      <span>Login</span>
-      <span>Cadastre-se</span>
+      <div [ngClass]="invisibleLogged">
+        <a (click)='logout()'>
+          <div class="avatar">
+            <span>{{loggedInitials}}</span>
+          </div>
+          <span>{{loggedName}}</span>
+        </a>
+      </div>
+      <div [ngClass]="invisibleLogin">
+        <a (click)="login()">Login</a>
+      </div>
     </div>
   </mat-toolbar>
 </header>

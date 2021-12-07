@@ -1,6 +1,8 @@
+import { LocalStorageService } from './../local-storage.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from './user.model';
+import { GetUsers } from './get-users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,34 +11,14 @@ import { User } from './user.model';
 export class UserService {
 
   loggedUser: User
+  userData: User[]
 
-  userData: User[] = [{
-    name: 'Administrador Inicial',
-    cpf: '000.000.000-00',
-    email: 'admin@admin.com',
-    password: '123',
-    admin: true
-  }, {
-    name: 'Rafael',
-    cpf: '111.111.111-11',
-    email: 'rafael@admin.com',
-    password: '123',
-    admin: true
-  }, {
-    name: 'Lucas',
-    cpf: '222.222.222-22',
-    email: 'lucas@admin.com',
-    password: '123',
-    admin: false
-  }, {
-    name: 'Maria',
-    cpf: '333.333.333-33',
-    email: 'maria@admin.com',
-    password: '123',
-    admin: false
-  }]
-
-  constructor(private snackBar: MatSnackBar) { }
+  constructor(
+    private snackBar: MatSnackBar,
+    private localStorageService: LocalStorageService
+    ) {
+      this.userData = localStorageService.get('userData') ? localStorageService.get('userData') : []
+    }
   
   showMessage(msg: string): void {
     this.snackBar.open(msg, 'x', {
@@ -46,17 +28,33 @@ export class UserService {
     })
   }
 
-  create(name: string, cpf: string, email: string, password: string, admin: boolean) {
+  get(): GetUsers[] {
+    const data = []
+    this.userData.forEach((user: User, i: number) => {
+      data.push({ index: i, adm: (user.admin ? 'task_alt' : 'radio_button_unchecked'), ...user })
+    })
+    return data
+  }
+
+  create(name: string, cpf: string, email: string, password: string, admin: boolean): void {
     const data = { name, cpf, email, password, admin }
     this.userData.push(data)
+    this.localStorageService.set('userData', this.userData)
   }
 
   update(index: number, name: string, cpf: string, email: string, password: string, admin: boolean) {
     const data = { name, cpf, email, password, admin }
     this.userData.splice(index, 1, data)
+    this.localStorageService.set('userData', this.userData)
   }
 
   delete(index: number) {
     this.userData.splice(index, 1)
+    this.localStorageService.set('userData', this.userData)
+  }
+  
+  reset() {
+    this.userData = [this.loggedUser]
+    this.localStorageService.remove('userData')
   }
 };

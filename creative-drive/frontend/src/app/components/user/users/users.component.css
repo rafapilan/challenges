@@ -1,0 +1,33 @@
+div {
+    width: 100%;
+}
+
+table {
+    min-width: 80vw;
+    margin-bottom: 20px;
+    text-align: start;
+}
+
+div.action {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+i.admin{
+    color: #2979ff;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.invisible {
+    display: none;
+}
+
+.edit {
+    color: #d9cd26;
+}
+
+.delete {
+    color: #e35e6b;
+}
