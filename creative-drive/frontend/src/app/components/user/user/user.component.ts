@@ -1,3 +1,4 @@
+import { ValidationService } from './../service/validation.service';
 import { AuthenticateService } from './../../pages/login/authenticate.service';
 import { UserService } from '../service/user.service';
 import { Component, OnInit } from '@angular/core';
@@ -27,6 +28,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private validationService: ValidationService,
     private router: Router,
     private route: ActivatedRoute,
     private authenticateService: AuthenticateService
@@ -81,6 +83,7 @@ export class UserComponent implements OnInit {
   }
 
   save(): void {
+
     if (this.index) {
       this.userService.update(this.index, this.name, this.cpf, this.email, this.password, this.admin)
       this.userService.showMessage('Usuário alterado com sucesso!')
@@ -92,8 +95,9 @@ export class UserComponent implements OnInit {
   }
 
   cancel(): void {
-    if (this.authenticateService.isAuthenticated) this.router.navigate(['users'])
-    else this.router.navigate([''])
+    // if (this.authenticateService.isAuthenticated) this.router.navigate(['users'])
+    // else this.router.navigate([''])
+    console.log(this.validationService.validCPF(this.cpf))
   }
 
   delete(): void {
