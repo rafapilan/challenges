@@ -14,3 +14,11 @@ div.buttons {
     justify-content: space-around;
     margin: 20px;
 }
+
+button {
+    font-weight: 400;
+}
+
+.invisible {
+    display: none;
+}

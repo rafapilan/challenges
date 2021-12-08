@@ -1,5 +1,5 @@
 import { User } from './../../user/user.model';
-import { UserService } from './../../user/user.service';
+import { UserService } from './../../user/service/user.service';
 import { LocalStorageService } from './../../local-storage.service';
 import { EventEmitter, Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material';

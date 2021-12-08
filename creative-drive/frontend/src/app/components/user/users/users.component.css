@@ -1,5 +1,12 @@
-div {
-    width: 100%;
+.search {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+button {
+    font-weight: 300;
 }
 
 table {

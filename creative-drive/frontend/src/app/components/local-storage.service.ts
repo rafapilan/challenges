@@ -33,12 +33,4 @@ export class LocalStorageService {
     }
     return false;
   }
-
-  clear(): boolean {
-    if (this.storage) {
-      this.storage.clear();
-      return true;
-    }
-    return false;
-  }
 }

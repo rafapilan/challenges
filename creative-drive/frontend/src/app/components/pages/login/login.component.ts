@@ -31,4 +31,8 @@ export class LoginComponent implements OnInit {
   newUser(): void {
     this.router.navigate(['user'])
   }
+
+  cancel(): void {
+    this.router.navigate([''])
+  }
 }

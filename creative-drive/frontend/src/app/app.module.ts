@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -45,7 +46,8 @@ import { UsersComponent } from './components/user/users/users.component';
     MatInputModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

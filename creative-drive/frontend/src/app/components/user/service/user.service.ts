@@ -1,8 +1,8 @@
-import { LocalStorageService } from './../local-storage.service';
+import { LocalStorageService } from './../../local-storage.service';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { User } from './user.model';
-import { GetUsers } from './get-users.model';
+import { User } from './../user.model';
+import { GetUsers } from './../get-users.model';
 
 @Injectable({
   providedIn: 'root'
@@ -28,12 +28,30 @@ export class UserService {
     })
   }
 
-  get(): GetUsers[] {
+  get(filter?: string, value?: string): GetUsers[] {
     const data = []
     this.userData.forEach((user: User, i: number) => {
       data.push({ index: i, adm: (user.admin ? 'task_alt' : 'radio_button_unchecked'), ...user })
     })
-    return data
+    if (value){
+      if(filter === 'name') {
+        return data.filter(user => user.name.toLowerCase().includes(value.toLowerCase()))
+      } else {
+        if (filter === 'email') {
+          return data.filter(user => user.email.toLowerCase().includes(value.toLowerCase()))
+        } else {
+          if (filter === 'cpf') {
+            return data.filter(user => user.cpf.toLowerCase().includes(value.toLowerCase()))
+          }else {
+            return data.filter(user => user.name.toLowerCase().includes(value.toLowerCase()) ||
+              user.email.toLowerCase().includes(value.toLowerCase()) ||
+              user.cpf.toLowerCase().includes(value.toLowerCase()))
+          }
+        }
+      }  
+    } else {
+      return data
+    }
   }
 
   create(name: string, cpf: string, email: string, password: string, admin: boolean): void {

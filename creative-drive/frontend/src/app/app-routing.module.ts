@@ -20,6 +20,9 @@ const routes: Routes = [
     path: "user/:index",
     component: UserComponent
   }, {
+    path: "user/:index/:delete",
+    component: UserComponent
+  }, {
     path: "users",
     component: UsersComponent
   }
