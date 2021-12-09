@@ -13,10 +13,10 @@ export class ValidationService {
   }
 
   uniqueEmail(email: string): boolean {
-    let unique = false
+    let unique = true
     this.userService.userData.forEach(user => {
       if (user.email === email) {
-        unique = true
+        unique = false
       }
     })
     return unique

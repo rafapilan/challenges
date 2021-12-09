@@ -18,6 +18,7 @@ export class UserComponent implements OnInit {
   password: string
   admin: boolean
   confirmPassword: string
+
   index: number = null
   deleteUser: boolean = false
   deleteAll: boolean = false
@@ -25,6 +26,12 @@ export class UserComponent implements OnInit {
   disabledAdmin: boolean = false
   invisibleSave = {}
   invisibleDelete = {}
+
+  nameWarn: string = ''
+  cpfWarn: string = ''
+  emailWarn: string = ''
+  passwordWarn: string = ''
+  confirmPasswordWarn: string = ''
 
   constructor(
     private userService: UserService,
@@ -82,22 +89,52 @@ export class UserComponent implements OnInit {
     this.invisibleDelete = { 'invisible': !this.deleteUser }
   }
 
-  save(): void {
+  validationName(e): void {
+    this.nameWarn = this.validationService.validName(e) ? '' : 'warn'
+  }
+  validationCPF(e): void {
+    this.cpfWarn = this.validationService.validCPF(e) ? '' : 'warn'
+  }
+  validationEmail(e): void {
+    this.emailWarn = this.validationService.validEmail(e) &&
+      this.validationService.uniqueEmail(e) ? '' : 'warn'
+  }
+  validationPassword(e): void {
+    this.passwordWarn = this.validationService.validPassword(e) ? '' : 'warn'
+  }
+  validationConfirmPassword(e): void {
+    this.confirmPasswordWarn = this.validationService.equalsPassword(this.password, e) ? '' : 'warn'
+  }
 
-    if (this.index) {
-      this.userService.update(this.index, this.name, this.cpf, this.email, this.password, this.admin)
-      this.userService.showMessage('Usuário alterado com sucesso!')
+  save(): void {
+    if (this.validationToSave()) {
+      if (this.index) {
+        this.userService.update(this.index, this.name, this.cpf, this.email, this.password, this.admin)
+        this.userService.showMessage('Usuário alterado com sucesso!')
+      } else {
+        this.userService.create(this.name, this.cpf, this.email, this.password, this.admin)
+        this.userService.showMessage('Usuário incluído com sucesso!')
+      }
+      this.router.navigate(['users'])
+    } else this.userService.showMessage('Dados inválidos!')
+  }
+
+  validationToSave(): boolean {
+    const vName = this.validationService.validName(this.name)
+    const vCPF = this.validationService.validCPF(this.cpf)
+    const vEmail = this.index ? true : this.validationService.validEmail(this.email)
+    const uEmail = this.index ? true : this.validationService.uniqueEmail(this.email)
+    const vPassword = this.validationService.validPassword(this.password)
+    const vConfirmPassword = this.validationService.equalsPassword(this.password, this.confirmPassword)
+    if (vName && vCPF && vEmail && uEmail && vPassword && vConfirmPassword) {
+      return true
     } else {
-      this.userService.create(this.name, this.cpf, this.email, this.password, this.admin)
-      this.userService.showMessage('Usuário incluído com sucesso!')
     }
-    this.router.navigate(['users'])
   }
 
   cancel(): void {
-    // if (this.authenticateService.isAuthenticated) this.router.navigate(['users'])
-    // else this.router.navigate([''])
-    console.log(this.validationService.validCPF(this.cpf))
+    if (this.authenticateService.isAuthenticated) this.router.navigate(['users'])
+    else this.router.navigate([''])
   }
 
   delete(): void {

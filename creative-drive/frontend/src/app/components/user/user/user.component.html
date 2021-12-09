@@ -1,24 +1,24 @@
 <mat-card class="user">
   <mat-card-title>{{title}}</mat-card-title>
   <form>
-    <mat-form-field>
-      <input matInput type="text" [disabled]="deleteUser" placeholder="Insira o nome completo."
+    <mat-form-field [color]="nameWarn">
+      <input matInput (ngModelChange)="validationName($event)" type="text" [disabled]="deleteUser" placeholder="Insira o nome completo."
         [(ngModel)]="name" name="name">
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput type="text" [disabled]="deleteUser" placeholder="CPF (000.000.000-00)"
+      </mat-form-field>
+    <mat-form-field [color]="cpfWarn">
+      <input matInput (ngModelChange)="validationCPF($event)" type="text" [disabled]="deleteUser" placeholder="CPF (000.000.000-00)"
         [(ngModel)]="cpf" name="cpf">
     </mat-form-field>
-    <mat-form-field>
-      <input matInput type="email" [disabled]="disabledEmail" placeholder="Email (email@provedor.com)"
+    <mat-form-field [color]="emailWarn">
+      <input matInput (ngModelChange)="validationEmail($event)" type="email" [disabled]="disabledEmail" placeholder="Email (email@provedor.com)"
         [(ngModel)]="email" name="email">
     </mat-form-field>
-    <mat-form-field>
-      <input matInput type="password" [disabled]="deleteUser" placeholder="Senha"
+    <mat-form-field [color]="passwordWarn">
+      <input matInput (ngModelChange)="validationPassword($event)" type="password" [disabled]="deleteUser" placeholder="Senha"
       [(ngModel)]="password" name="password">
     </mat-form-field>
-    <mat-form-field>
-      <input matInput type="password" [disabled]="deleteUser" placeholder="Confirme a senha"
+    <mat-form-field [color]="confirmPasswordWarn">
+      <input matInput (ngModelChange)="validationConfirmPassword($event)" type="password" [disabled]="deleteUser" placeholder="Confirme a senha"
       [(ngModel)]="confirmPassword" name="confirmPassword">
     </mat-form-field>
     <mat-checkbox [disabled]="disabledAdmin" [(ngModel)]="admin" name="admin">Administrador.</mat-checkbox>

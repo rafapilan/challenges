@@ -23,7 +23,7 @@ export class UserService {
   showMessage(msg: string): void {
     this.snackBar.open(msg, 'x', {
       duration: 3000,
-      horizontalPosition: "right",
+      horizontalPosition: "center",
       verticalPosition: "top"
     })
   }
