@@ -1,3 +1,4 @@
+import { UserService } from './../../user/service/user.service';
 import { User } from './../../user/user.model';
 import { AuthenticateService } from './../../pages/login/authenticate.service';
 import { Router } from '@angular/router';
@@ -18,7 +19,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authenticateService: AuthenticateService
+    private authenticateService: AuthenticateService,
+    private userService: UserService
     ) { }
     
   ngOnInit() {
@@ -56,16 +58,21 @@ export class HeaderComponent implements OnInit {
     return initials.toUpperCase()
   }
 
-  goHome() {
+  goHome(): void {
     this.router.navigate([''])
   }
 
-  logout() {
+  editUser(): void {
+    const index = this.userService.returnLoggedIndex(this.authenticateService.loggedUser.email)
+    this.router.navigate([`user/${index}`])
+  }
+
+  logout(): void {
     this.authenticateService.logout()
     this.router.navigate(['login'])
   }
 
-  login() {
+  login(): void {
     this.router.navigate(['login'])
   }
 }

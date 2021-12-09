@@ -29,7 +29,7 @@
 }
 
 .logoMenu {
-    max-height: 40px;
+    height: 40px;
 }
 
 .homeIcon {
@@ -51,8 +51,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    width: 33px;
+    height: 33px;
     border: solid 1px #00bcd4;
     border-radius: 50%;
     background-color: #2979ff;
@@ -61,11 +61,16 @@
 
 .avatar span {
     font-size: 1.3rem;
+    font-weight: 400;
 }
 
 .login a {
     margin: 10px;
     font-size: 1rem;
+}
+
+.material-icons {
+    font-size: 1.2rem;
 }
 
 .invisible {
@@ -75,9 +80,27 @@
 a {
     text-decoration: none;
     color: #fff;
+    font-weight: 300;
 }
 
 a:hover {
     font-weight:400;
     cursor: pointer;
+}
+
+@media(max-width: 700px){
+    .logo {
+        width: 32px;
+        overflow: hidden;
+    }
+}
+
+@media(max-width: 500px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .loggedName {
+        display: none;
+    }
 }

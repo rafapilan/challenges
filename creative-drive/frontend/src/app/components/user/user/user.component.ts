@@ -138,7 +138,7 @@ export class UserComponent implements OnInit {
   }
 
   delete(): void {
-    this.deleteAll ? this.userService.reset() : this.userService.delete(this.index)
+    this.deleteAll ? this.userService.reset(this.authenticateService.loggedUser) : this.userService.delete(this.index)
     this.router.navigate(['users'])
   }
 }

@@ -9,12 +9,22 @@
     <span class="title">Usuários e Login</span>
     <div class="login">
       <div [ngClass]="invisibleLogged">
-        <a (click)='logout()'>
-          <div class="avatar">
-            <span>{{loggedInitials}}</span>
-          </div>
-          <span>{{loggedName}}</span>
-        </a>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <a>
+            <div class="avatar">
+              <span>{{loggedInitials}}</span>
+            </div>
+            <span class="loggedName">{{loggedName}}</span>
+          </a>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editUser()">
+            <i class="material-icons">manage_accounts</i> Editar perfil
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <i class="material-icons">logout</i> Logout
+          </button>
+        </mat-menu>
       </div>
       <div [ngClass]="invisibleLogin">
         <a (click)="login()">Login</a>
@@ -22,5 +32,3 @@
     </div>
   </mat-toolbar>
 </header>
-
-

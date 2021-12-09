@@ -10,7 +10,6 @@ import { GetUsers } from './../get-users.model';
 
 export class UserService {
 
-  loggedUser: User
   userData: User[]
 
   constructor(
@@ -30,7 +29,7 @@ export class UserService {
 
   get(filter?: string, value?: string): GetUsers[] {
     const data = []
-    this.userData.forEach((user: User, i: number) => {
+    this.userData.forEach((user, i) => {
       data.push({ index: i, adm: (user.admin ? 'task_alt' : 'radio_button_unchecked'), ...user })
     })
     if (value){
@@ -54,6 +53,16 @@ export class UserService {
     }
   }
 
+  returnLoggedIndex(email: string): number {
+    let index = 0
+    this.userData.forEach((user, i) => {
+      if (user.email === email) {
+        index = i
+      }
+    })
+    return index
+  }
+
   create(name: string, cpf: string, email: string, password: string, admin: boolean): void {
     const data = { name, cpf, email, password, admin }
     this.userData.push(data)
@@ -71,8 +80,8 @@ export class UserService {
     this.localStorageService.set('userData', this.userData)
   }
   
-  reset() {
-    this.userData = [this.loggedUser]
+  reset(user) {
+    this.userData = [user]
     this.localStorageService.remove('userData')
   }
 };
